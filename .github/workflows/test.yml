@@ -16,11 +16,11 @@ jobs:
         java-version: 11
     - uses: ./
     - run: pwd
-    - name: Building...
-      run: processing-java --build --sketch=. --output=out/build
-    - name: Exporting...
-      run: processing-java --build --sketch=. --output=out/export
-    - name: Creating an artifact of the export...
-      uses: actions/upload-artifact@v2
-      with:
-        path: out/export
+    # - name: Building...
+    #   run: processing-java --build --sketch=. --output=out/build
+    # - name: Exporting...
+    #   run: processing-java --build --sketch=. --output=out/export
+    # - name: Creating an artifact of the export...
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     path: out/export

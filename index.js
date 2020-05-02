@@ -3,7 +3,7 @@ const tc = require('@actions/tool-cache')
 
 try {
     console.log('Downloading Processing 3.5.4...')
-    // const procPath = await tc.downloadTool('https://download.processing.org/processing-3.5.4-linux64.tgz') 
+    const procPath = await tc.downloadTool('https://download.processing.org/processing-3.5.4-linux64.tgz') 
 
     console.log('Extracting...')
     // const procExtractedFolder = await tc.extractTar(procPath, '/usr/bin/processing') 
