@@ -15,5 +15,5 @@ runs:
   main: 'index.js'
 
 branding:
-  color: blue
-  icon: activity
+  color: red
+  icon: settings
