@@ -4,10 +4,11 @@ inputs:
   version:
     description: 'Version of Processing, e. g. 3.5.4'
     required: true
+    default: '3.5.4'
   platform-filetype:
-    description: "The Platform Processing is going to run on ['windows64.zip', 'windows32.zip', 'linux64.tgz', 'macosx.zip']. Automatically defaults to linux. If you choose to run your jobs on Windows or MacOS, you will have to set platform to your desired one."
+    description: "['windows64.zip', 'windows32.zip', 'linux64.tgz', 'macosx.zip']"
     required: false
-    default: 'linux64'
+    default: 'linux64.tgz'
 # outputs:
 runs:
   using: 'node12'
