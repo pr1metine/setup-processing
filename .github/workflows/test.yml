@@ -17,3 +17,4 @@ jobs:
     - uses: ./
     - run: pwd
     - run: echo $PATH
+    - run: processing-java --help
