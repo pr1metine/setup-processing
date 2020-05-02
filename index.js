@@ -1,22 +1,22 @@
-const core = require('@actions/core') 
-const tc = require('@actions/tool-cache') 
+// const core = require('@actions/core') 
+// const tc = require('@actions/tool-cache') 
 
-try {
-    console.log('Downloading Processing 3.5.4...')
-    // const procPath = await tc.downloadTool('https://download.processing.org/processing-3.5.4-linux64.tgz') 
+// try {
+//     console.log('Downloading Processing 3.5.4...')
+//     // const procPath = await tc.downloadTool('https://download.processing.org/processing-3.5.4-linux64.tgz') 
 
-    console.log('Extracting...')
-    // const procExtractedFolder = await tc.extractTar(procPath, '/usr/bin/processing') 
+//     console.log('Extracting...')
+//     // const procExtractedFolder = await tc.extractTar(procPath, '/usr/bin/processing') 
     
-    console.log('Caching...')
-    // const cachedPath = await tc.cacheDir(procExtractedFolder, 'processing', '3.5.4') 
-    // core.addPath(cachedPath) 
-} catch (error) {
-    // core.setFailed(error.message) 
-}
+//     console.log('Caching...')
+//     // const cachedPath = await tc.cacheDir(procExtractedFolder, 'processing', '3.5.4') 
+//     // core.addPath(cachedPath) 
+// } catch (error) {
+//     // core.setFailed(error.message) 
+// }
 
-// const tc = require('@actions/tool-cache');
-// const core = require('@actions/core');
+// // const tc = require('@actions/tool-cache');
+// // const core = require('@actions/core');
 
 const tc = require('@actions/tool-cache');
 const core = require('@actions/core');
