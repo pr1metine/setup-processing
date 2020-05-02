@@ -4,9 +4,12 @@ const tc = require('@actions/tool-cache')
 
 try {
     const procPath = await tc.downloadTool('https://download.processing.org/processing-3.5.4-linux64.tgz')
+    core.setOutput(`procPath: ${procPath}`)
     const procExtractedFolder = await tc.extractTar(procPath, '/usr/bin/processing')
+    core.setOutput(`procExtractedFolder: ${procExtractedFolder}`)
     
     const cachedPath = await tc.cacheDir(procExtractedFolder, 'processing', '3.5.4')
+    core.setOutput(`cachedPath: ${cachedPath}`)
     core.addPath(cachedPath)
 } catch (error) {
     core.setFailed(error.message)
