@@ -1,22 +1,25 @@
 const core = require('@actions/core') 
 const tc = require('@actions/tool-cache') 
-
-try {
-    console.log('Downloading Processing 3.5.4...')
-    const procPath = tc.downloadTool('https://download.processing.org/processing-3.5.4-linux64.tgz') 
-    console.log(`Downloaded: ${procPath}`)
-
-    console.log('Extracting...')
-    const procExtractedFolder = tc.extractTar(procPath, '/usr/bin/processing') 
-    console.log(`Extracted: ${procExtractedFolder}`)
-
-    console.log('Caching...')
-    const cachedPath = tc.cacheDir(procExtractedFolder, 'processing', '3.5.4') 
-    core.addPath(cachedPath) 
-    console.log(`Cached and added to path ${cachedPath}`)
-} catch (error) {
-    // core.setFailed(error.message) 
+async function run(){
+    try {
+        console.log('Downloading Processing 3.5.4...')
+        const procPath = await tc.downloadTool('https://download.processing.org/processing-3.5.4-linux64.tgz') 
+        console.log(`Downloaded: ${procPath}`)
+    
+        console.log('Extracting...')
+        const procExtractedFolder = await tc.extractTar(procPath, '/usr/bin/processing') 
+        console.log(`Extracted: ${procExtractedFolder}`)
+    
+        console.log('Caching...')
+        const cachedPath = await tc.cacheDir(procExtractedFolder, 'processing', '3.5.4') 
+        core.addPath(cachedPath) 
+        console.log(`Cached and added to path ${cachedPath}`)
+    } catch (error) {
+        core.setFailed(error.message) 
+    }
 }
+
+run();
 
 // const tc = require('@actions/tool-cache');
 // const core = require('@actions/core');
