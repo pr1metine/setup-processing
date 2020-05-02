@@ -2,6 +2,7 @@ const core = require('@actions/core')
 const tc = require('@actions/tool-cache')
 
 async function run() {
+    console.log(`Potential Path: ${tc.find('processing', '3.5.4', 'x64')}`)
     if (tc.find('processing', '3.5.4', 'x64')) {
         console.log('Processing is already cached.')
         return;
