@@ -16,6 +16,7 @@ jobs:
         java-version: 11
     - uses: ./
     - run: pwd
+    - run: echo $PATH
     # - name: Building...
     #   run: processing-java --build --sketch=. --output=out/build
     # - name: Exporting...
