@@ -1,6 +1,13 @@
 name: 'Setup Processing'
-description: 'Sets up the Processing SDK'
-# inputs:
+description: 'Sets up the Processing SDK. When setting the parameters, this action will try to fetch https://processing.org/download/processing-${version}-${platform}.[tgz, zip]'
+inputs:
+  version:
+    description: 'Version of Processing, e. g. 3.5.4'
+    required: true
+  platform-filetype:
+    description: "The Platform Processing is going to run on ['windows64.zip', 'windows32.zip', 'linux64.tgz', 'macosx.zip']. Automatically defaults to linux. If you choose to run your jobs on Windows or MacOS, you will have to set platform to your desired one."
+    required: false
+    default: 'linux64'
 # outputs:
 runs:
   using: 'node12'
