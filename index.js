@@ -14,8 +14,8 @@
 const tc = require('@actions/tool-cache');
 const core = require('@actions/core');
 
-const node12Path = await tc.downloadTool('https://nodejs.org/dist/v12.7.0/node-v12.7.0-linux-x64.tar.gz');
-const node12ExtractedFolder = await tc.extractTar(node12Path, 'path/to/extract/to');
+const node12Path =  tc.downloadTool('https://nodejs.org/dist/v12.7.0/node-v12.7.0-linux-x64.tar.gz');
+const node12ExtractedFolder =  tc.extractTar(node12Path, 'path/to/extract/to');
 
-const cachedPath = await tc.cacheDir(node12ExtractedFolder, 'node', '12.7.0');
+const cachedPath =  tc.cacheDir(node12ExtractedFolder, 'node', '12.7.0');
 core.addPath(cachedPath);
