@@ -17,7 +17,7 @@ async function run() {
         console.log(`Extracted: ${procExtractedFolder}`)
 
         console.log('Caching...')
-        const cachedPath = await tc.cacheDir(procExtractedFolder, 'processing', '3.5.4')
+        const cachedPath = await tc.cacheDir(`${procExtractedFolder}/processing-3.5.4`, 'processing', '3.5.4')
         core.addPath(cachedPath)
         console.log(`Cached and added to path ${cachedPath}`)
     } catch (error) {
