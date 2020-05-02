@@ -1,5 +1,6 @@
 const core = require('@actions/core') 
 const tc = require('@actions/tool-cache') 
+
 async function run(){
     try {
         console.log('Downloading Processing 3.5.4...')
@@ -7,7 +8,7 @@ async function run(){
         console.log(`Downloaded: ${procPath}`)
     
         console.log('Extracting...')
-        const procExtractedFolder = await tc.extractTar(procPath, '/usr/bin/processing') 
+        const procExtractedFolder = await tc.extractTar(procPath, 'processing') 
         console.log(`Extracted: ${procExtractedFolder}`)
     
         console.log('Caching...')
