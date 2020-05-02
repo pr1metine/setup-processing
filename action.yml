@@ -1,7 +1,11 @@
-name: 'Setting up Processing'
+name: 'Setup Processing'
 description: 'Sets up the Processing SDK'
 # inputs:
 # outputs:
 runs:
   using: 'node12'
   main: 'index.js'
+
+branding:
+  color: blue
+  icon: activity
