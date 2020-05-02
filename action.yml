@@ -1,0 +1,7 @@
+name: 'Setting up Processing'
+description: 'Sets up the Processing SDK'
+# inputs:
+# outputs:
+runs:
+  using: 'node12'
+  main: 'index.js'
