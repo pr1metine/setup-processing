@@ -11,7 +11,6 @@ try {
 
     core.addPath(cachedPath);
 
-    console.log('procPath');
 } catch (error) {
     core.setFailed(error.message);
 }
