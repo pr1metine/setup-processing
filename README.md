@@ -1,8 +1,8 @@
 # setup-processing
-[![CI](https://github.com/ifP1/setup-processing/workflows/CI/badge.svg)](https://github.com/ifP1/setup-processing/actions)
+[![CI with Linux](https://github.com/ifP1/setup-processing/workflows/CI%20with%20Linux/badge.svg)](https://github.com/ifP1/setup-processing/actions?query=workflow%3A%22CI+with+Linux%22)
+[![CI with Windows](https://github.com/ifP1/setup-processing/workflows/CI%20with%20Windows/badge.svg)](https://github.com/ifP1/setup-processing/actions?query=workflow%3A%22CI+with+Windows%22)
+[![CI with MacOS](https://github.com/ifP1/setup-processing/workflows/CI%20with%20MacOS/badge.svg)](https://github.com/ifP1/setup-processing/actions?query=workflow%3A%22CI+with+MacOS%22)
 [![GitHub issues](https://img.shields.io/github/issues/ifP1/setup-processing)](https://github.com/ifP1/setup-processing/issues)
-[![GitHub forks](https://img.shields.io/github/forks/ifP1/setup-processing)](https://github.com/ifP1/setup-processing/network)
-[![GitHub stars](https://img.shields.io/github/stars/ifP1/setup-processing)](https://github.com/ifP1/setup-processing/stargazers)
 
 Eine "GitHub Action" zum Installieren von Processing für CI/CD
 
