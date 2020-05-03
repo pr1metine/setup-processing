@@ -2,11 +2,11 @@ name: 'Setup Processing'
 description: 'Sets up the Processing SDK. Will try to fetch https://processing.org/download/processing-${version}-${platform-filetype}'
 inputs:
   version:
-    description: 'Version of Processing, e. g. 3.5.4'
+    description: 'Version of Processing, e.g. 3.5.4'
     required: true
     default: '3.5.4'
   platform-filetype:
-    description: "['windows64.zip', 'windows32.zip', 'linux64.tgz']"
+    description: "e.g. 'windows64.zip', 'windows32.zip', 'linux64.tgz'"
     required: false
     default: 'linux64.tgz'
 # outputs:

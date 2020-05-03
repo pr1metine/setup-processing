@@ -2,7 +2,6 @@ const core = require('@actions/core')
 const tc = require('@actions/tool-cache')
 
 async function run() {
-
     const version = core.getInput('version')
     const filetype = core.getInput('platform-filetype')
     const zip = filetype.match(/ *.zip$/)
