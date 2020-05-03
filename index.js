@@ -5,8 +5,8 @@ async function run() {
 
     const version = core.getInput('version')
     const filetype = core.getInput('platform-filetype')
-    const zip = filetype.match(/ *.zip$ /)
-    const macosx = filetype.match(/ ^macosx* /)
+    const zip = filetype.match(/ *.zip$/)
+    const macosx = filetype.match(/ ^macosx*/)
     console.log(`Processing ${version}, ${filetype}, compression: ${zip || '.tgz'}, macosx: ${macosx}`)
 
     console.log(`Trying to find Path: ${tc.find('processing', version)}`)
