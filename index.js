@@ -5,33 +5,34 @@ async function run() {
 
     const version = core.getInput('version')
     const filetype = core.getInput('platform-filetype')
-    const tar = filetype.match(/ *.tgz$/)
+    const zip = filetype.match(/ *.zip$/)
 
-    console.log(`Potential Path: ${tc.find('processing', '3.5.4', 'x64')}`)
-    if (tc.find('processing', '3.5.4', 'x64')) {
+    console.log(`Processing ${version}, ${filetype}, zip? ${zip}`)
+    console.log(`Trying to find Path: ${tc.find('processing', version)}`)
+    if (tc.find('processing', version)) {
         console.log('Processing is already cached.')
         return;
     }
 
-    try {
-        console.log('Downloading Processing 3.5.4...')
-        const procPath = await tc.downloadTool(`https://download.processing.org/processing-${version}-${filetype}`)
-        console.log(`Downloaded: ${procPath}`)
+    console.log(`Downloading Processing ${version}...`)
+    const procPath = await tc.downloadTool(`https://download.processing.org/processing-${version}-${filetype}`)
+    console.log(`Downloaded: ${procPath}`)
 
-        console.log('Extracting...')
-        const procExtractedFolder = tar ? 
-                                    await tc.extractTar(procPath, 'processing') : 
-                                    await tc.extractZip(procPath, 'processing');
-        
-        console.log(`Extracted: ${procExtractedFolder}`)
+    console.log('Extracting...')
+    const procExtractedFolder = zip ?
+        await tc.extractZip(procPath, 'processing') :
+        await tc.extractTar(procPath, 'processing');
 
-        console.log('Caching...')
-        const cachedPath = await tc.cacheDir(`${procExtractedFolder}/processing-${version}`, 'processing', version)
-        core.addPath(cachedPath)
-        console.log(`Cached and added to path ${cachedPath}`)
-    } catch (error) {
-        core.setFailed(error.message)
-    }
+    console.log(`Extracted: ${procExtractedFolder}`)
+
+    console.log('Caching...')
+    const cachedPath = await tc.cacheDir(`${procExtractedFolder}/processing-${version}`, 'processing', version)
+    core.addPath(cachedPath)
+    console.log(`Cached and added to path ${cachedPath}`)
 }
 
-run();
+try {
+    run();
+} catch (error) {
+    core.setFailed(error.message)
+}

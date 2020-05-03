@@ -1,5 +1,5 @@
 # setup-processing
-![CI](https://github.com/ifP1/setup-processing/workflows/CI/badge.svg)
+[![CI](https://github.com/ifP1/setup-processing/workflows/CI/badge.svg)](https://github.com/ifP1/setup-processing/actions)
 [![GitHub issues](https://img.shields.io/github/issues/ifP1/setup-processing)](https://github.com/ifP1/setup-processing/issues)
 [![GitHub forks](https://img.shields.io/github/forks/ifP1/setup-processing)](https://github.com/ifP1/setup-processing/network)
 [![GitHub stars](https://img.shields.io/github/stars/ifP1/setup-processing)](https://github.com/ifP1/setup-processing/stargazers)
