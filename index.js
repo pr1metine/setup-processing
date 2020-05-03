@@ -6,7 +6,7 @@ async function run() {
     const version = core.getInput('version')
     const filetype = core.getInput('platform-filetype')
     const zip = filetype.match(/ *.zip$ /)
-    const macosx = filetype.match(/ *macos* /)
+    const macosx = filetype.match(/ ^macosx* /)
     console.log(`Processing ${version}, ${filetype}, compression: ${zip || '.tgz'}, macosx: ${macosx}`)
 
     console.log(`Trying to find Path: ${tc.find('processing', version)}`)
@@ -15,7 +15,7 @@ async function run() {
         return;
     }
 
-    console.log(`Downloading Processing ${version}...`)
+    console.log(`Downloading Processing ${version} (https://download.processing.org/processing-${version}-${filetype})...`)
     const procPath = await tc.downloadTool(`https://download.processing.org/processing-${version}-${filetype}`)
     console.log(`Downloaded: ${procPath}`)
 
