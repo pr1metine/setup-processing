@@ -5,12 +5,13 @@ async function run() {
 
     const version = core.getInput('version')
     const filetype = core.getInput('platform-filetype')
-    const zip = filetype.match(/ *.zip$/)
+    const zip = filetype.match(/ *.zip$ /)
+    const macosx = filetype.match(/ *macos* /)
+    console.log(`Processing ${version}, ${filetype}, compression: ${zip ?? '.tgz'}, macosx: ${macosx}`)
 
-    console.log(`Processing ${version}, ${filetype}, zip? ${zip}`)
     console.log(`Trying to find Path: ${tc.find('processing', version)}`)
     if (tc.find('processing', version)) {
-        console.log('Processing is already cached.')
+        console.log('Processing is already cached. Aborting... ')
         return;
     }
 
@@ -22,11 +23,12 @@ async function run() {
     const procExtractedFolder = zip ?
         await tc.extractZip(procPath, 'processing') :
         await tc.extractTar(procPath, 'processing');
-
     console.log(`Extracted: ${procExtractedFolder}`)
 
     console.log('Caching...')
-    const cachedPath = await tc.cacheDir(`${procExtractedFolder}/processing-${version}`, 'processing', version)
+    const cachedPath = macosx ?
+        await tc.cacheDir(`${procExtractedFolder}/Processing.app`, 'processing', version) :
+        await tc.cacheDir(`${procExtractedFolder}/processing-${version}`, 'processing', version);
     core.addPath(cachedPath)
     console.log(`Cached and added to path ${cachedPath}`)
 }
