@@ -6,7 +6,7 @@ inputs:
     required: true
     default: '3.5.4'
   platform-filetype:
-    description: "['windows64.zip', 'windows32.zip', 'linux64.tgz', 'macosx.zip']"
+    description: "['windows64.zip', 'windows32.zip', 'linux64.tgz']"
     required: false
     default: 'linux64.tgz'
 # outputs:
