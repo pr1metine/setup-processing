@@ -9,7 +9,7 @@ Eine "GitHub Action" zum Installieren von Processing für CI/CD
 ## Code
 ```yaml
 - name: Setup Processing
-  uses: ifP1/setup-processing@v1.0.1
+  uses: ifP1/setup-processing@v1.1.1
   with:
     # Version of Processing, e.g. 3.5.4
     version: # default is 3.5.4
