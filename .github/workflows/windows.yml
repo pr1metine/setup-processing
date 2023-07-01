@@ -2,31 +2,29 @@ name: CI with Windows
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        version: '3.5.4'
-        platform-filetype: 'windows64.zip'
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          version: "3.5.4"
+          platform-filetype: "windows64.zip"
 
   test:
     needs: build
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        version: '3.5.4'
-        platform-filetype: 'windows64.zip'
-    - run: where.exe processing 
-    - run: where.exe processing-java
-    - run: processing-java --help
-    - run: processing --help
-      
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          tag: "processing-1292-4.2"
+      - run: where.exe processing
+      - run: where.exe processing-java
+      - run: processing-java --help
+      - run: processing --help

@@ -2,31 +2,19 @@ name: CI with MacOS
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-  build:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        version: '3.5.4'
-        platform-filetype: 'macosx.zip'
-
   test:
-    needs: build
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        version: '3.5.4'
-        platform-filetype: 'macosx.zip'
-    - run: which -a processing
-    - run: which -a processing-java
-    - run: processing --help
-    - run: processing-java --help
-      
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          tag: "processing-1292-4.2"
+      - run: which -a processing
+      - run: which -a processing-java
+      - run: processing --help
+      - run: processing-java --help

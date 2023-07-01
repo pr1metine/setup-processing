@@ -1,15 +1,12 @@
 name: 'Setup Processing'
 description: 'Sets up the Processing SDK. Will try to fetch https://processing.org/download/processing-${version}-${platform-filetype}'
 inputs:
-  version:
-    description: 'Version of Processing, e.g. 3.5.4'
-    required: true
-    default: '3.5.4'
-  platform-filetype:
-    description: "e.g. 'windows64.zip', 'windows32.zip', 'linux64.tgz'"
+  tag:
+    description: 'Tag of Processing GitHub Release, e.g. processing-1292-4.2'
     required: false
-    default: 'linux64.tgz'
-# outputs:
+  asset-name:
+    description: 'Name of a Processing GitHub Release Asset, e.g. processing-4.2-linux-arm64.tgz'
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'
