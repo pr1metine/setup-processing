@@ -4,20 +4,19 @@ import { terser } from "rollup-plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 
 // `npm run build` -> `production` is true
-// `npm run dev` -> `production` is false
+// `npm run watch` -> `production` is false
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-  input: "index.js",
+  input: "src/index.ts",
   output: {
     file: "dist/index.js",
-    format: "cjs", // immediately-invoked function expression — suitable for <script> tags
-    // sourcemap: true,
+    format: "cjs",
   },
   plugins: [
-    resolve(), // tells Rollup how to find date-fns in node_modules
-    commonjs(), // converts date-fns to ES modules
-    // typescript(),
+    resolve({ preferBuiltins: true }),
+    commonjs(),
+    typescript(),
     production && terser(), // minify, but only in production
   ],
 };

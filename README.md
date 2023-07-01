@@ -11,7 +11,7 @@ Sets up the Processing SDK. Will try to fetch https://processing.org/download/pr
 
 ```yaml
 - name: Setup Processing
-  uses: ifP1/setup-processing@v1.1.1
+  uses: pr1metine/setup-processing@v1.1.1
   with:
     # Version of Processing, e.g. 3.5.4
     version: # default is 3.5.4

@@ -5,13 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -c -w",
-    "dev": "npm-run-all --parallel start watch",
-    "start": "serve public"
+    "watch": "rollup -c -w"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifP1/setup-processing.git"
+    "url": "git+https://github.com/pr1metine/setup-processing.git"
   },
   "keywords": [
     "GitHub",

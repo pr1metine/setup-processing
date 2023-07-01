@@ -15,5 +15,5 @@ runs:
   main: 'dist/index.js'
 
 branding:
-  color: red
+  color: blue
   icon: settings
