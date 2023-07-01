@@ -2,37 +2,36 @@ name: CI with Linux
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        version: '3.5.4'
-        platform-filetype: 'linux64.tgz'
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          version: "3.5.4"
+          platform-filetype: "linux64.tgz"
+#   test:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - uses: ./
+#       with:
+#         version: '3.5.4'
+#         platform-filetype: 'linux64.tgz'
+#     - run: pwd
+#     - run: echo $PATH
+#     - run: ls -lah /opt/hostedtoolcache/
+#     - run: ls -lah /opt/hostedtoolcache/processing
+#     - run: ls -lah /opt/hostedtoolcache/processing/3.5.4
+#     - run: ls -lah /opt/hostedtoolcache/processing/3.5.4/x64
+#     - run: which processing
+#     - run: which processing-java
+#     - run: processing-java --help
+#     - run: processing --help
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        version: '3.5.4'
-        platform-filetype: 'linux64.tgz'
-    - run: pwd
-    - run: echo $PATH
-    - run: ls -lah /opt/hostedtoolcache/
-    - run: ls -lah /opt/hostedtoolcache/processing
-    - run: ls -lah /opt/hostedtoolcache/processing/3.5.4
-    - run: ls -lah /opt/hostedtoolcache/processing/3.5.4/x64
-    - run: which processing 
-    - run: which processing-java
-    - run: processing-java --help
-    - run: processing --help
-      

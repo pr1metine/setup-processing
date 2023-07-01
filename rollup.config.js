@@ -2,6 +2,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import typescript from "@rollup/plugin-typescript";
+import json from "@rollup/plugin-json";
 
 // `npm run build` -> `production` is true
 // `npm run watch` -> `production` is false
@@ -16,7 +17,8 @@ export default {
   plugins: [
     resolve({ preferBuiltins: true }),
     commonjs(),
+    json(), // Allow requiring JSON files, e. g. const json = require('JSON')
     typescript(),
-    production && terser(), // minify, but only in production
+    production && terser({ format: { comments: false } }), // minify, but only in production
   ],
 };

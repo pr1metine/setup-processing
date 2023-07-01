@@ -1,7 +1,7 @@
 {
   "name": "setup-processing",
-  "version": "1.0.0",
-  "description": "\"GitHub Action\" to install Processing für CI/CD",
+  "version": "2.0.0",
+  "description": "\"GitHub Action\" to install Processing for CI/CD",
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
@@ -26,7 +26,9 @@
   "dependencies": {
     "@actions/core": "^1.9.1",
     "@actions/github": "^5.1.1",
-    "@actions/tool-cache": "^1.6.1"
+    "@actions/tool-cache": "^1.6.1",
+    "@octokit/rest": "^19.0.13",
+    "@rollup/plugin-json": "^6.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.2",
