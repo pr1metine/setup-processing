@@ -1,5 +1,5 @@
 name: 'Setup Processing'
-description: 'Sets up the Processing SDK. Will try to fetch https://processing.org/download/processing-${version}-${platform-filetype}'
+description: 'Sets up the Processing SDK. Downloads and installs a GitHub Release Asset from Processing'
 inputs:
   tag:
     description: 'Tag of Processing GitHub Release, e.g. processing-1292-4.2'

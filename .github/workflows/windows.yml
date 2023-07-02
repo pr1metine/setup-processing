@@ -7,23 +7,26 @@ on:
     branches: [master]
 
 jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./
-        with:
-          version: "3.5.4"
-          platform-filetype: "windows64.zip"
-
   test:
-    needs: build
     runs-on: windows-latest
+    strategy:
+      matrix:
+        processing:
+          - tag: "processing-1292-4.2"
+            semver: "1292.0.0"
+          - tag: "processing-1272-4.0a3"
+            semver: "1272.0.0"
+          - tag: "processing-0270-3.5.4"
+            semver: "270.0.0"
+          - tag: "processing-0232-3.0a5"
+            semver: "232.0.0"
+          - tag: "processing-0227-2.2.1"
+            semver: "227.0.0"
     steps:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          tag: "processing-1292-4.2"
+          tag: ${{matrix.processing.tag}}
       - run: where.exe processing
       - run: where.exe processing-java
       - run: processing-java --help
