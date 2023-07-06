@@ -3,7 +3,10 @@ import { Octokit, RestEndpointMethodTypes } from "@octokit/rest";
 
 import { ArchiveType, Release, Repository } from "./types";
 
-let OCTOKIT = new Octokit();
+let OCTOKIT = new Octokit({
+  auth: core.getInput("token"),
+  userAgent: "GitHub Action 'setup-processing'",
+});
 
 /**
  * Retrieves a release with the specified tag.
@@ -37,7 +40,13 @@ async function getReleaseByTag(
         : OCTOKIT.rest.repos.getLatestRelease(repo)
     )
   ).then((results) =>
-    results.filter(isFulfilled).map((result) => result.value)
+    results
+      //   .map((result) => {
+      //     core.debug(`${JSON.stringify(result)}`);
+      //     return result;
+      //   })
+      .filter(isFulfilled)
+      .map((result) => result.value)
   );
 
   let successfullyRetrievedReleases = releases.filter(
@@ -48,7 +57,7 @@ async function getReleaseByTag(
     throw new Error(
       `Could not find a Processing release for the following tag: ${JSON.stringify(
         tag
-      )}`
+      )}, releases.length=${releases.length}`
     );
   }
 

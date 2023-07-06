@@ -1,8 +1,9 @@
-import resolve from "@rollup/plugin-node-resolve";
+import analyze from "rollup-plugin-analyzer";
 import commonjs from "@rollup/plugin-commonjs";
-import { terser } from "rollup-plugin-terser";
-import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
+import nodeResolve from "@rollup/plugin-node-resolve";
+import terser from "@rollup/plugin-terser";
+import typescript from "@rollup/plugin-typescript";
 
 // `npm run build` -> `production` is true
 // `npm run watch` -> `production` is false
@@ -15,10 +16,11 @@ export default {
     format: "cjs",
   },
   plugins: [
-    resolve({ preferBuiltins: true }),
+    nodeResolve({ preferBuiltins: true, exportConditions: ["node"] }),
+    json({ compact: true, preferConst: true }), // Allow requiring JSON files, e. g. const json = require('JSON')
     commonjs(),
-    json(), // Allow requiring JSON files, e. g. const json = require('JSON')
     typescript(),
-    production && terser({ format: { comments: false } }), // minify, but only in production
+    production && terser({ ecma: 2020, format: { comments: false } }), // minify, but only in production
+    production && analyze({ summaryOnly: true }),
   ],
 };

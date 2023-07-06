@@ -46,6 +46,7 @@ async function run() {
 
   core.debug(`Attempting to install...`);
   const installPath = await installAsset(downloadPath, semverTag);
+  core.setOutput("install-dir", installPath);
 
   core.debug(`Processing successfully installed!`);
 
@@ -58,7 +59,7 @@ async function run() {
     const out = coerce(matches[1])?.format();
     if (out === undefined) {
       throw new Error(
-        `Could coerce revision number to semver: number=${matches[1]}. Please file an issue`
+        `Could not coerce revision number to semver: number=${matches[1]}. Please file an issue`
       );
     }
 
@@ -66,8 +67,4 @@ async function run() {
   }
 }
 
-try {
-  run();
-} catch (error: any) {
-  core.setFailed(error.message);
-}
+run().catch((reason) => core.setFailed(reason.message));

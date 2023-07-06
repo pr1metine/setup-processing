@@ -11,21 +11,33 @@ Sets up the Processing SDK. Given a tag name and a release asset name, `setup-pr
 
 - If no tag name `tag` is provided, the latest release will be used.
 - If no asset name `asset-name` is provided, this action will try to choose the right asset based on the Action Runner's OS and CPU architecture.
+- This action uses `github.token` to extend the [GitHub release fetching rate limit](https://docs.github.com/en/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#rate-limits-for-requests-from-github-actions). You may change the used token with the Action input `token`
 
-## Code
+## Usage
+
+Check these [example workflows](.github/workflows/).
+
+## Example
+
+Check this [action.yaml](action.yml) for more information.
 
 ```yaml
 - name: Setup Processing
-  uses: pr1metine/setup-processing@v2.0.0
+  id: setup-processing
+  uses: pr1metine/setup-processing@v2.1.0
   with:
     # Tag of Processing GitHub Release, e.g. processing-1292-4.2
     # See https://github.com/processing/processing4/releases and
     # https://github.com/processing/processing4/releases
-    tag: # optional, will use latest release by default
+    tag: "processing-1292-4.2" # optional, will use latest release by default
     # Name of a Processing GitHub Release Asset, e.g. processing-4.2-linux-arm64.tgz
-    asset-name: # optional, will infer based on Runner by default
+    asset-name: "processing-4.2-linux-x64.tgz" # optional, will infer based on Runner by default
+- name: Output Processing installation directory
+  run: echo "${{steps.setup-processing.outputs.install-dir}}"
 ```
 
 ## Development
 
-[This file](src/index.ts) serves as this Action's entry point. Use [act](https://github.com/nektos/act) to test this GitHub Action locally before pushing.
+- I currently use Node v20.4.0
+- [This file](src/index.ts) serves as this Action's entry point.
+- Use [act](https://github.com/nektos/act) to test this GitHub Action locally before pushing.

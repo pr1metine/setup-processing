@@ -1,14 +1,13 @@
 {
     "compilerOptions": {
-      "target": "es2018",                          
-      "module": "esnext",
+      "target": "ES2021",
+      "module": "ESNext",
       "moduleResolution": "node",                     
       "noEmitOnError": true,
-      "lib": ["es2017"],                            
+      "lib": ["ES2021"],                            
       "strict": true,  
       "esModuleInterop": false,                 
       "rootDir": "./"
-    }
-    ,
+    },
     "include": ["./src/**/*.ts"]
-  }
+}

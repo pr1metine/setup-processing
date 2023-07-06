@@ -1,12 +1,21 @@
 name: 'Setup Processing'
 description: 'Sets up the Processing SDK. Downloads and installs a GitHub Release Asset from Processing'
 inputs:
+  token:
+    description: 'GitHub token for fetching GitHub releases, defaults to using secrets.GITHUB_TOKEN'
+    required: false
+    default: ${{ github.token }}
   tag:
     description: 'Tag of Processing GitHub Release, e.g. processing-1292-4.2'
     required: false
   asset-name:
     description: 'Name of a Processing GitHub Release Asset, e.g. processing-4.2-linux-arm64.tgz'
     required: false
+
+outputs:
+  install-dir:
+    description: 'Location of installed Processing application (as absolute path to install root)'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'

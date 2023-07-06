@@ -25,10 +25,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
+        id: setup-processing
         with:
           tag: ${{matrix.processing.tag}}
-    # TODO: Fix
-    #   - run: which -a processing
-    #   - run: which -a processing-java
-    #   - run: processing --help
-    #   - run: processing-java --help
+      - run: echo "${{steps.setup-processing.outputs.install-dir}}"
+      # TODO: Fix
+      - run: which -a processing
+      - run: which -a processing-java
+      - run: processing --help
+      - run: processing-java --help

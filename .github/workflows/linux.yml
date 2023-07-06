@@ -24,11 +24,14 @@ jobs:
             semver: "227.0.0"
     steps:
       - uses: actions/checkout@v2
+      - run: node --version
       - uses: ./
+        id: setup-processing
         with:
           tag: ${{matrix.processing.tag}}
       - run: pwd
       - run: echo $PATH
+      - run: echo "${{steps.setup-processing.outputs.install-dir}}"
       - run: ls -lah /opt/hostedtoolcache/
       - run: ls -lah /opt/hostedtoolcache/processing
       - run: ls -lah /opt/hostedtoolcache/processing/${{matrix.processing.semver}}
