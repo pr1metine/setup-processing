@@ -92,12 +92,12 @@ function getMatchers(os: NodeJS.Platform, arch: NodeJS.Architecture): RegExp[] {
 function extractTool(path: string, type: ArchiveType): Promise<string> {
   switch (type) {
     case "application/x-zip-compressed":
-    case "application/octet-stream":
     case "binary/octet-stream":
       core.warning(`Asset type of ${path} is "${type}". Assumed to be zip`);
     case "application/zip":
       return tc.extractZip(path, "extracted-processing");
 
+    case "application/octet-stream":
     case "application/x-compressed":
       core.warning(`Asset type of ${path} is "${type}". Assumed to be gzip`);
     case "application/gzip":
