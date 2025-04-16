@@ -6,7 +6,10 @@ type Repository = {
 type ArchiveType =
   | "application/zip"
   | "application/gzip"
-  | "application/octet-stream";
+  | "application/octet-stream"
+  | "application/x-compressed"
+  | "application/x-zip-compressed"
+  | "binary/octet-stream";
 
 type ReleaseAsset = {
   name: string;

@@ -1,5 +1,5 @@
 import * as core from "@actions/core";
-import { Octokit, RestEndpointMethodTypes } from "@octokit/rest";
+import { Octokit } from "@octokit/rest";
 
 import { ArchiveType, Release, Repository } from "./types";
 
@@ -86,14 +86,14 @@ function getArchiveType(content_type: string): ArchiveType {
   if (
     content_type !== "application/zip" &&
     content_type !== "application/gzip" &&
-    content_type !== "application/octet-stream"
+    content_type !== "application/octet-stream" &&
+    content_type !== "application/x-compressed" &&
+    content_type !== "application/x-zip-compressed" &&
+    content_type !== "binary/octet-stream"
   ) {
     throw new Error(
       `Unsupported archive type: ${content_type}. Please file an issue`
     );
-  }
-
-  if (content_type === "application/octet-stream") {
   }
 
   return <ArchiveType>content_type;

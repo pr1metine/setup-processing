@@ -12,6 +12,8 @@ jobs:
     strategy:
       matrix:
         processing:
+          - tag: "processing-1293-4.3"
+            semver: "1293.0.0"
           - tag: "processing-1292-4.2"
             semver: "1292.0.0"
           - tag: "processing-1272-4.0a3"
