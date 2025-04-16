@@ -48,7 +48,7 @@ async function run() {
   const installPath = await installAsset(downloadPath, semverTag);
   core.setOutput("install-dir", installPath);
 
-  core.debug(`Processing successfully installed!`);
+  core.info(`Processing successfully installed!`);
 
   function getRevisionNumber(tag: string): string {
     const matches = tag.match(/.*-0*([0-9]+)-.*/);
