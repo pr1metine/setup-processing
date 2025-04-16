@@ -9,6 +9,9 @@ Sets up the Processing SDK. Given a tag name and a release asset name, `setup-pr
 
 ## Note
 
+- **🚨🚨🚨 Please note that this action DOES NOT work with processing revision 1300 or newer (i.e., >=4.4.0)🚨🚨🚨**
+  - This is because installation files of these revisions do not follow folder structure conventions of previous revisions. Supporting installation of these versions would significantly complicate this GH action.
+  - Please use their MSI / DMG / snap installer instead for installing processing. Check out the attached files of a processing release, e.g., [the release page for 4.4.0](https://github.com/processing/processing4/releases/tag/processing-1300-4.4.0).
 - If no tag name `tag` is provided, the latest release will be used.
 - If no asset name `asset-name` is provided, this action will try to choose the right asset based on the Action Runner's OS and CPU architecture.
 - This action uses `github.token` to extend the [GitHub release fetching rate limit](https://docs.github.com/en/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#rate-limits-for-requests-from-github-actions). You may change the used token with the Action input `token`

@@ -28,6 +28,8 @@ async function run() {
 
   core.debug(`Trying to locate existing Processing installation...`);
   let semverTag = getRevisionNumber(release.tag);
+  core.info(`Semver tag: ${semverTag}`);
+
   let cachedDirectory = tc.find("processing", semverTag);
   if (cachedDirectory) {
     core.info(`Processing (${release.tag}) is already cached. Aborting...`);
@@ -56,12 +58,23 @@ async function run() {
       throw new Error(`Could not parse tag for revision number: tag=${tag}`);
     }
 
-    const out = coerce(matches[1])?.format();
-    if (out === undefined) {
+    const semver = coerce(matches[1]);
+
+    if (semver === null) {
       throw new Error(
         `Could not coerce revision number to semver: number=${matches[1]}. Please file an issue`
       );
     }
+
+    if (semver.compare("1300.0.0") >= 0) {
+      // If given version is older than rev 1300
+
+      throw new Error(
+        `Unfortunately, this plugin does not support Processing revisions 1300 or newer. Please install the official snap distributions of Processing instead.`
+      );
+    }
+
+    const out = semver.format();
 
     return out;
   }
