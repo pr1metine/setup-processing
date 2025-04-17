@@ -27,7 +27,7 @@ Check this [action.yaml](action.yml) for more information.
 ```yaml
 - name: Setup Processing
   id: setup-processing
-  uses: pr1metine/setup-processing@v2.1.0
+  uses: pr1metine/setup-processing@v2.2.0
   with:
     # Tag of Processing GitHub Release, e.g. processing-1292-4.2
     # See https://github.com/processing/processing4/releases and
